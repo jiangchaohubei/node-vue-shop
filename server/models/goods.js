@@ -2,9 +2,12 @@ var mongoose=require('mongoose')
 var Schema=mongoose.Schema;
 
 var goodsSchema=new Schema({
-    goodsName:String,
-    goodsPrice:Number,
-    goodsImage:String
+      "productId":{type:String},
+      "productName":String,
+      "salePrice":Number,
+      "checked":String,
+      "productNum":Number,
+      "productImage":String
 })
 
 module.exports=mongoose.model('Good',goodsSchema);

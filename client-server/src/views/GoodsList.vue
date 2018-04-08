@@ -29,13 +29,13 @@
           <div class="accessory-list-wrap">
             <div class="accessory-list col-4">
               <ul>
-                <li>
+                <li v-for="(item,index) in goodsList">
                   <div class="pic">
-                    <a href="#"><img src="/static/1.jpg" alt=""></a>
+                    <a href="#"><img v-lazy="'static/'+item.productImage" alt=""></a>
                   </div>
                   <div class="main">
-                    <div class="name">XX</div>
-                    <div class="price">XX</div>
+                    <div class="name">{{item.productName}}</div>
+                    <div class="price">{{item.salePrice | currency('$')}}</div>
                     <div class="btn-area">
                       <a href="javascript:;" class="btn btn--m">加入购物车</a>
                     </div>
@@ -58,17 +58,26 @@
   import NavBread from './../components/NavBread'
   import axios from 'axios'
 export default {
-  data () {
-    return {
-      goodsList: []
-    }
-  },
-
-  components:{
-    NavHeader,
-    NavFooter,
-    NavBread
-
-  }
+        data () {
+          return {
+            goodsList: []
+          }
+        },
+        mounted(){
+              this.getGoodsList()
+        },
+        components:{
+          NavHeader,
+          NavFooter,
+          NavBread
+        },
+        methods:{
+            getGoodsList(){
+                  axios.get("/goods/list").then((response)=>{
+                      var res=response.data
+                      this.goodsList=res.result.goodsList
+                  })
+            }
+        }
 }
 </script>

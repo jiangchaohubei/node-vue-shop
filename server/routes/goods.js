@@ -8,16 +8,16 @@ router.get('/list',(req,res,next)=>{
             res.json({
                 status:'1',
                 msg:err.message,
-                data:{
-                    goods:[]
+                result:{
+                    goodsList:[]
                 }
             })
         }else{
             res.json({
                 status:'0',
                 msg:'',
-                data:{
-                    goods:goods
+                result:{
+                    goodsList:goods
                 }
             })
         }
