@@ -28,3 +28,14 @@
     </div>
   </footer>
 </Template>
+<script>
+export default {
+  name: 'NavFooter',
+  data () {
+    return {
+      msg: ""
+    }
+  }
+
+}
+</script>
